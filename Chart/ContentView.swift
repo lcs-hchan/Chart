@@ -37,12 +37,17 @@ struct ExampleTwoView: View {
         }
 }
 struct PractiseView: View {
-    let subjects = ["SBI3U","ENG3U","TEJ3M","ICS3U", "CHW3M", "MCR3U", "BAD3M"]
+    let subjects = ["SBI3U","ENG3U","TEJ3M","ICS3U", "CHW3M", "MCR3U", "BAF3M"]
+    let name = ["Biology","English","Computer Enginnering Technology", "Introduction to Computer Science"]
     let marks = [68.2, 67.0, 90.1, 69.3, 73.6, 65.7, 78.5]
     var body: some View {
         Chart {
             ForEach(subjects.indices, id: \.self) { index in
                 BarMark(x: .value("subject", subjects[index]), y: .value("Mark", marks[index]))
+                    .foregroundStyle(by: .value("subject", subjects[index]))
+                    .annotation {
+                        Text("\(marks[index])")
+                    }
             }
         }
     }
