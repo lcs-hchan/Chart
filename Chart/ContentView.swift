@@ -48,8 +48,10 @@ struct PractiseView: View {
                 ForEach(subjects.indices, id: \.self) { index in
                     BarMark(x: .value("subject", subjects[index]), y: .value("Mark", marks[index]))
                         .foregroundStyle(by: .value("subject", name[index]))
-                        .annotation {
+                        .annotation(position: .overlay) {
                             Text("\(marks[index])")
+                                .font(.headline)
+                                .foregroundStyle(.white)
                         }
                     
                 }
